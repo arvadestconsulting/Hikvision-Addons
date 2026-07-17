@@ -538,9 +538,9 @@ class MQTTHandler(EventHandler):
                 # Start the snapshot task without waiting for it
                 asyncio.create_task(take_and_publish_snapshot())
 
-                # After 60 seconds, put the sensor back to idle
-                await asyncio.sleep(60)
-                logger.info("Updating doorbell sensor back to 'idle' after 60 seconds")
+                # After 2 seconds, put the sensor back to idle
+                await asyncio.sleep(2)
+                logger.info("Updating doorbell sensor back to 'idle' after 2 seconds")
                 call_sensor.set_state('idle')
             case VideoInterComAlarmType.DISMISS_INCOMING_CALL:
                 logger.info("Call dismissed, updating sensor")
